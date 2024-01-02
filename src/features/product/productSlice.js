@@ -35,7 +35,7 @@ export const getProductsViaCategory = createAsyncThunk(
 		const { sorting } = thunkAPI.getState().filters
 		let tempResp
 		if (category !== "") {
-			const response = await getRequest({
+			let response = await getRequest({
 				url: `/products/category/${category}`,
 			})
 
@@ -119,8 +119,9 @@ const productSlice = createSlice({
 		builder.addCase(getProductsViaCategory.pending, (state) => {
 			state.productsStatus = STATUS.LOADING
 		})
-		builder.addCase(getProductsViaCategory.rejected, (state) => {
+		builder.addCase(getProductsViaCategory.rejected, (state, err) => {
 			state.productsStatus = STATUS.ERROR
+			console.log(err)
 		})
 
 		//getProduct - SINGLE PRODUCT

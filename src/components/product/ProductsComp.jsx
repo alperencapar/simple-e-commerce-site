@@ -38,24 +38,23 @@ const Products = () => {
 	}
 
 	useEffect(() => {
-		productViaCat()
-	}, [category])
+		// if (!q && !category) {
+		// 	getAllProducts()
+		// }
 
-	useEffect(() => {
 		const triggerQueryAction = setTimeout(() => {
 			if (q) queryProducts()
-
-			if (!q && !category) {
-				getAllProducts()
-			}
-
-			if (category && !q) {
-				productViaCat()
-			}
+			if (category && !q) productViaCat()
 		}, 750)
 
 		return () => clearTimeout(triggerQueryAction)
 	}, [q])
+
+	useEffect(() => {
+		if (category) productViaCat()
+		if (category && !q) productViaCat()
+		if (!category && !q) getAllProducts()
+	}, [category])
 
 	useEffect(() => {
 		sortPriceRange()

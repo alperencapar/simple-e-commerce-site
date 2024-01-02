@@ -10,9 +10,10 @@ const Category = ({ category }) => {
 		if (categoryName === filterCategory) {
 			dispatch(changeCategory(""))
 			return
+		} else {
+			dispatch(changeCategory(categoryName))
+			dispatch(getProductsViaCategory())
 		}
-		dispatch(changeCategory(categoryName))
-		dispatch(getProductsViaCategory())
 	}
 	return (
 		<>

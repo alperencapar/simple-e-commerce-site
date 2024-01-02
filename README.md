@@ -1,6 +1,5 @@
--   product filter fix
+-   add styling. Bootstrap or Tailwind
 -   edit header
 -   add slider
 -   add paginate
 -   loading component
--   add styling. Bootstrap or Tailwind
