@@ -17,10 +17,6 @@ const Products = () => {
 		(state) => state.filters
 	)
 
-	const queryProducts = () => {
-		dispatch(sortProductsByTitle(q))
-	}
-
 	const sortOrdering = () => {
 		dispatch(sortProductOrder(sorting))
 	}
@@ -38,21 +34,19 @@ const Products = () => {
 	}
 
 	useEffect(() => {
-		// if (!q && !category) {
-		// 	getAllProducts()
-		// }
-
 		const triggerQueryAction = setTimeout(() => {
-			if (q) queryProducts()
 			if (category && !q) productViaCat()
-		}, 750)
+			// no need to dispatch sortProductsByTitle action.
+			// beacause its dispatched from the input component.
+			// just need to dispatch getProductsViaCategory action if there is a category and isn't q
+		}, 850)
 
 		return () => clearTimeout(triggerQueryAction)
 	}, [q])
 
 	useEffect(() => {
 		if (category) productViaCat()
-		if (category && !q) productViaCat()
+		// if (category && !q) productViaCat()
 		if (!category && !q) getAllProducts()
 	}, [category])
 

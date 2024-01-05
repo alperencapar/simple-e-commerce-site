@@ -6,6 +6,7 @@ import { addToCart } from "../features/cart/cartSlice"
 import Breadcrumbs from "../components/breadcrumb/Breadcrumbs"
 import { FaMinus, FaPlus } from "react-icons/fa"
 import Header from "../components/header/Header"
+import Alert from "../components/alert/Alert"
 
 const ProductDetail = () => {
 	const dispatch = useDispatch()
@@ -60,7 +61,7 @@ const ProductDetail = () => {
 								<p aria-label="Product Info Description">
 									{product?.description}
 								</p>
-								<p aria-label="price">${product.price}</p>
+								<p aria-label="price">${product?.price}</p>
 								<div className="rating">
 									<span>rating: {product?.rating?.rate}</span>
 									<span>
@@ -72,7 +73,7 @@ const ProductDetail = () => {
 					</div>
 
 					<aside>
-						<div className="product-price">${product.price}</div>
+						<div className="product-price">${product?.price}</div>
 
 						<div className="count-input-container">
 							<button

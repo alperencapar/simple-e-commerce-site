@@ -1,4 +1,3 @@
-import React from "react"
 import ProductsComp from "../components/product/ProductsComp"
 import CategoriesFilter from "../components/filter/CategoriesFilter"
 import Filters from "../components/filter/Filters"

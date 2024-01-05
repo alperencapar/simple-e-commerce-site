@@ -48,9 +48,10 @@ export const getProductsViaCategory = createAsyncThunk(
 			}
 
 			return response
-		} else {
-			thunkAPI.dispatch(getProducts())
 		}
+		// else {
+		// 	thunkAPI.dispatch(getProducts())
+		// }
 	}
 )
 
