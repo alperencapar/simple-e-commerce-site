@@ -1,4 +1,4 @@
-import Dropdown from "./Dropdown"
+import OrderingSelect from "./OrderingSelect"
 import Input from "./Input"
 import TopFilters from "./TopFilters"
 

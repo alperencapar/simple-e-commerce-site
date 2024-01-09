@@ -10,7 +10,7 @@ const initialState = {
 }
 
 export const getAllCategories = createAsyncThunk(
-	"getAllCategories",
+	"categories/getAllCategories",
 	async (state, thunkAPI) => {
 		const categories = await getRequest("/products/categories")
 

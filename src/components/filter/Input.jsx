@@ -1,10 +1,17 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { changeQuery } from "../../features/filter/filterSlice"
-import { sortProductsByTitle } from "../../features/product/productSlice"
+import {
+	getProducts,
+	getProductsViaCategory,
+	sortProductsByTitle,
+} from "../../features/product/productSlice"
+import Form from "react-bootstrap/Form"
 
 const Input = () => {
-	const { q } = useSelector((state) => state.filters)
+	const [queryVal, setQueryVal] = useState("")
+	const [onQuery, setonQuery] = useState(false)
+	const { q, category } = useSelector((state) => state.filters)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -15,17 +22,41 @@ const Input = () => {
 		return () => clearTimeout(triggerAction)
 	}, [q])
 
-	const handleSearch = (e) => {
+	const handleInputChange = (e) => {
 		const val = e.target.value
-		dispatch(changeQuery(val))
+		// console.log(e.target)
+		setQueryVal(() => val)
 	}
+
+	useEffect(() => {
+		const triggerQueryAction = setTimeout(() => {
+			if (onQuery) {
+				if (queryVal) {
+					dispatch(changeQuery(queryVal))
+				}
+
+				//to reset products
+				if (!queryVal && category) {
+					dispatch(getProductsViaCategory())
+				} else if (!queryVal && !category) {
+					dispatch(getProducts())
+				}
+			}
+		}, 850)
+
+		return () => clearTimeout(triggerQueryAction)
+	}, [queryVal])
+
 	return (
 		<>
-			<input
+			<Form.Control
 				type="search"
 				name="q"
 				id=""
-				onChange={(e) => handleSearch(e)}
+				placeholder="Search product title"
+				onChange={(e) => handleInputChange(e)}
+				onFocus={() => setonQuery(true)}
+				className="w-auto"
 			/>
 		</>
 	)

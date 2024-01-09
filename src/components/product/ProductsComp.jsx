@@ -8,7 +8,7 @@ import {
 	sortProductsByTitle,
 } from "../../features/product/productSlice"
 import Product from "./Product"
-// import { useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 const Products = () => {
 	const dispatch = useDispatch()
@@ -16,6 +16,8 @@ const Products = () => {
 	const { q, category, sorting, priceRange } = useSelector(
 		(state) => state.filters
 	)
+	const { categoryName } = useParams()
+	// const { pathname } = useLocation()
 
 	const sortOrdering = () => {
 		dispatch(sortProductOrder(sorting))
@@ -33,23 +35,34 @@ const Products = () => {
 		dispatch(getProducts())
 	}
 
-	useEffect(() => {
-		const triggerQueryAction = setTimeout(() => {
-			if (category && !q) productViaCat()
-			// no need to dispatch sortProductsByTitle action.
-			// beacause its dispatched from the input component.
-			// just need to dispatch getProductsViaCategory action if there is a category and isn't q
-		}, 850)
+	// no need to dispatch sortProductsByTitle action.
+	// beacause its dispatched from the input component.
+	// just need to dispatch getProductsViaCategory action when category is changed
+	/*
+		useEffect(() => {
+			const triggerQueryAction = setTimeout(() => {
+				if (category && !q) productViaCat()
+			}, 850)
 
-		return () => clearTimeout(triggerQueryAction)
-	}, [q])
+			return () => clearTimeout(triggerQueryAction)
+		}, [q])
+	*/
 
 	useEffect(() => {
 		if (category) productViaCat()
-		// if (category && !q) productViaCat()
-		if (!category && !q) getAllProducts()
+
+		// if (category) productViaCat()
+		if (!category && !q) {
+			if (!categoryName) {
+				getAllProducts()
+			}
+			// if (!pathname.includes("categories/")) {
+			// 	getAllProducts()
+			// }
+		}
 	}, [category])
 
+	// ? can be moved to OrderingSelect component
 	useEffect(() => {
 		sortPriceRange()
 		sortOrdering()
@@ -57,7 +70,7 @@ const Products = () => {
 
 	return (
 		<>
-			<div className="products">
+			<div className="products d-md-grid d-block">
 				{products?.map((product) => (
 					<Product key={product.id} product={product} />
 				))}

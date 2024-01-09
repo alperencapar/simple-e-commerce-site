@@ -12,7 +12,7 @@ const initialState = {
 }
 
 export const getProducts = createAsyncThunk(
-	"getProducts",
+	"products/getProducts",
 	async (state, thunkAPI) => {
 		const response = await getRequest({ url: "/products" })
 		const { sorting } = thunkAPI.getState().filters
@@ -29,7 +29,7 @@ export const getProducts = createAsyncThunk(
 )
 
 export const getProductsViaCategory = createAsyncThunk(
-	"getProductsViaCategory",
+	"products/getCategoryProducts",
 	async (state, thunkAPI) => {
 		const { category } = thunkAPI.getState().filters
 		const { sorting } = thunkAPI.getState().filters

@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux"
 import { SORT } from "../../utils/ordering"
 import { changePricingOrder } from "../../features/filter/filterSlice"
+import Form from "react-bootstrap/Form"
 
-const Dropdown = () => {
+const OrderingSelect = () => {
 	const dispatch = useDispatch()
 	const orderKeys = Object.keys(SORT)
 
@@ -14,15 +15,21 @@ const Dropdown = () => {
 
 	return (
 		<>
-			<select name="sorting" id="" onChange={(e) => handleChange(e)}>
+			<Form.Select
+				aria-label="Sort product by price order"
+				name="sorting"
+				size="sm"
+				onChange={(e) => handleChange(e)}
+				className="w-auto"
+			>
 				<option value="" defaultValue>
 					Select ordering
 				</option>
 				<option value={SORT.ASC}>{orderKeys[0]}</option>
 				<option value={SORT.DESC}>{orderKeys[1]}</option>
-			</select>
+			</Form.Select>
 		</>
 	)
 }
 
-export default Dropdown
+export default OrderingSelect

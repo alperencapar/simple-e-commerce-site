@@ -1,8 +1,12 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import CartItem from "./CartItem"
 import CartSummary from "./CartSummary"
-import { clearCart, getTotalPrice } from "../../features/cart/cartSlice"
+import { getTotalPrice } from "../../features/cart/cartSlice"
+
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 const CartComp = () => {
 	const dispatch = useDispatch()
@@ -12,27 +16,24 @@ const CartComp = () => {
 		dispatch(getTotalPrice())
 	}, [cartItems])
 
-	const handleClearCart = () => dispatch(clearCart())
 	return (
 		<>
 			{cartItems?.length > 0 && (
 				<>
-					<CartSummary />
-					<div className="card-items-container">
-						<ul className="cart-items">
-							{cartItems?.map((item, i) => (
-								<CartItem key={i} item={item} />
-							))}
-						</ul>
-					</div>
-					<div className="cart-action">
-						<button
-							onClick={handleClearCart}
-							className="btn btn-delete"
-						>
-							Clear The Cart
-						</button>
-					</div>
+					<Container>
+						<Row>
+							<Col lg={8}>
+								<ul className="cart-items d-grid gap-3">
+									{cartItems.map((item, i) => (
+										<CartItem key={i} item={item} />
+									))}
+								</ul>
+							</Col>
+							<Col lg={4}>
+								<CartSummary />
+							</Col>
+						</Row>
+					</Container>
 				</>
 			)}
 		</>

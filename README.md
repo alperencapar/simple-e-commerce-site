@@ -1,5 +1,6 @@
--   add styling. Bootstrap or Tailwind
--   edit header
+-   cart delete from cart btn fix(can wait until x sass)
+-   categories page style
 -   add slider
 -   add paginate
+-   add sass
 -   loading component

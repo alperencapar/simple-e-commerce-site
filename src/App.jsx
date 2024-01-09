@@ -7,12 +7,16 @@ import NotFound from "./pages/NotFound"
 import ProductDetail from "./pages/ProductDetail"
 import Category from "./pages/Category"
 import Categories from "./pages/Categories"
-import Header from "./components/header/Header"
 import Cart from "./pages/Cart"
+import Header from "./components/header/Header"
+
+// ! TEMPORARY
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
 	return (
 		<>
+			<Header />
 			<Routes>
 				<Route path="/">
 					<Route index element={<Home />} />
