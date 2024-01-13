@@ -5,11 +5,16 @@ import Filters from "../components/filter/Filters"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import SliderComp from "../components/slider/SliderComp"
 
 const Home = () => {
 	return (
 		<>
 			<Container>
+				<Row className="mt-4">
+					<SliderComp />
+				</Row>
+
 				<Row className="mt-4">
 					<Filters />
 				</Row>

@@ -23,38 +23,45 @@ const CartSummary = () => {
 	return (
 		<>
 			<aside className="cart-aside">
-				<Card border="primary" className="cart-summary">
-					<Card.Header>Summary</Card.Header>
-					<Card.Body>
-						<div className="summary-actions">
+				<Row>
+					<Card
+						border="primary"
+						className="cart-summary"
+						data-bs-theme="light"
+					>
+						<Card.Header>Summary</Card.Header>
+						<Card.Body>
+							<div className="summary-actions">
+								<Row>
+									<Col>
+										<Button
+											className="w-100"
+											onClick={() => refreshTotal()}
+										>
+											Calculate Total
+										</Button>
+									</Col>
+
+									<Col>
+										<Button
+											className="w-100"
+											variant="danger"
+											onClick={clearTheCartItems}
+										>
+											<FaTrash />{" "}
+											<span>Clear The Cart</span>
+										</Button>
+									</Col>
+								</Row>
+							</div>
+
 							<Row>
-								<Col>
-									<Button
-										className="w-100"
-										onClick={() => refreshTotal()}
-									>
-										Calculate Total
-									</Button>
-								</Col>
-
-								<Col>
-									<Button
-										className="w-100"
-										variant="danger"
-										onClick={clearTheCartItems}
-									>
-										<FaTrash /> <span>Clear The Cart</span>
-									</Button>
-								</Col>
+								<Col>Total Pricing:</Col>
+								<Col>${total && total}</Col>
 							</Row>
-						</div>
-
-						<Row>
-							<Col>Total Pricing:</Col>
-							<Col>${total && total}</Col>
-						</Row>
-					</Card.Body>
-				</Card>
+						</Card.Body>
+					</Card>
+				</Row>
 			</aside>
 		</>
 	)

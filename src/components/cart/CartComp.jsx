@@ -20,7 +20,7 @@ const CartComp = () => {
 		<>
 			{cartItems?.length > 0 && (
 				<>
-					<Container>
+					<Container className="mt-4">
 						<Row>
 							<Col lg={8}>
 								<ul className="cart-items d-grid gap-3">

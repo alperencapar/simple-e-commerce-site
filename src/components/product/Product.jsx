@@ -33,7 +33,7 @@ const Product = ({ product }) => {
 
 	return (
 		<>
-			<Card className="p-3">
+			<Card className="p-3" data-bs-theme="light">
 				<Link to={"/products/" + product.id}>
 					<Card.Img variant="top" src={product.image} />
 				</Link>

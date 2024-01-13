@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import Category from "./Category"
 import { getAllCategories } from "../../features/category/categorySlice"
 
+import Container from "react-bootstrap/Container"
+
 const CategoriesComp = () => {
 	const { categories } = useSelector((state) => state.categories)
 
@@ -13,11 +15,16 @@ const CategoriesComp = () => {
 	}, [])
 
 	return (
-		<ul aria-label="Product categories">
-			{categories?.map((cat, i) => (
-				<Category key={i} category={cat} />
-			))}
-		</ul>
+		<Container className="mt-4">
+			<div
+				className="categories-container"
+				aria-label="Product categories"
+			>
+				{categories?.map((cat, i) => (
+					<Category key={i} category={cat} />
+				))}
+			</div>
+		</Container>
 	)
 }
 

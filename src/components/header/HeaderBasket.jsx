@@ -15,6 +15,8 @@ const HeaderBasket = () => {
 			<Link to={"/cart"} className="basket-container position-relative">
 				<FaShoppingCart />
 				<Badge
+					bg="light"
+					text="dark"
 					pill
 					className="position-absolute top-0 start-100 translate-middle"
 				>

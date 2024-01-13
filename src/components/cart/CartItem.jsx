@@ -71,7 +71,7 @@ const CartItem = ({ item }) => {
 		<>
 			<li className="cart-item">
 				<Row>
-					<Card>
+					<Card data-bs-theme="light">
 						<Card.Body>
 							<Row>
 								<Col sm={3}>
