@@ -43,7 +43,7 @@ export const getProductsViaCategory = createAsyncThunk(
 				tempResp = response.sort((a, b) => a.price - b.price)
 				response = tempResp
 			} else if (sorting === SORT.DESC) {
-				tempResp = response.sort.sort((a, b) => b.price - a.price)
+				tempResp = response.sort((a, b) => b.price - a.price)
 				response = tempResp
 			}
 
