@@ -122,7 +122,7 @@ const productSlice = createSlice({
 		})
 		builder.addCase(getProductsViaCategory.rejected, (state, err) => {
 			state.productsStatus = STATUS.ERROR
-			console.log(err)
+			console.error(err)
 		})
 
 		//getProduct - SINGLE PRODUCT

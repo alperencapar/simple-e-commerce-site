@@ -39,14 +39,17 @@ const Product = ({ product }) => {
 				</Link>
 				<Card.Body className="d-grid p-2">
 					<Row>
-						<Col sm="auto">
+						<Col>
 							<Card.Title as="h6">
 								<Link to={"/products/" + product.id}>
 									{product.title}
 								</Link>
 							</Card.Title>
 						</Col>
-						<Col sm="auto">
+					</Row>
+
+					<Row>
+						<Col>
 							<span className="fw-bold text-end">
 								${product.price}
 							</span>

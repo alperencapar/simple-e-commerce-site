@@ -48,6 +48,7 @@ header {
 	/* grid-template-columns: repeat(3, minmax(16.25rem, 1fr)); */
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1.5rem;
+	scroll-margin: 8rem;
 }
 
 .products .card .card-img-top {

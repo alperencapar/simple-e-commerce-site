@@ -4,7 +4,7 @@ const initialState = {
 	q: "",
 	category: "",
 	sorting: null,
-	perPage: 5,
+	perPage: 6,
 	priceRange: {
 		min: 0,
 		max: 1000,
