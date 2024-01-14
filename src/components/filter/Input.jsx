@@ -24,7 +24,6 @@ const Input = () => {
 
 	const handleInputChange = (e) => {
 		const val = e.target.value
-		// console.log(e.target)
 		setQueryVal(() => val)
 	}
 
