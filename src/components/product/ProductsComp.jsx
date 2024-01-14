@@ -76,12 +76,6 @@ const Products = () => {
 
 	return (
 		<>
-			{/* <div className="products d-md-grid d-block">
-				{products?.map((product) => (
-					<Product key={product.id} product={product} />
-				))}
-			</div> */}
-
 			<div
 				className="products d-md-grid d-block"
 				ref={productsContainerRef}
@@ -97,19 +91,21 @@ const Products = () => {
 			>
 				<ReactPaginate
 					breakLabel="..."
-					nextLabel="next >"
+					nextLabel="next &raquo;"
+					previousLabel="&laquo; previous"
 					onPageChange={handlePageClick}
 					pageRangeDisplayed={5}
 					pageCount={pageCount}
-					previousLabel="< previous"
 					renderOnZeroPageCount={null}
 					containerClassName="pagination justify-content-center"
 					pageClassName="page-item"
 					previousClassName="page-item"
 					nextClassName="page-item"
+					breakClassName="page-item"
 					pageLinkClassName="page-link px-4"
 					previousLinkClassName="page-link"
 					nextLinkClassName="page-link"
+					breakLinkClassName="page-link"
 					activeClassName="active"
 					disabledClassName="disabled"
 				/>
