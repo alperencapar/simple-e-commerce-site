@@ -14,6 +14,8 @@ const Category = () => {
 
 	useEffect(() => {
 		dispatch(changeCategory(categoryName))
+
+		return () => dispatch(changeCategory(""))
 	}, [categoryName])
 
 	return (

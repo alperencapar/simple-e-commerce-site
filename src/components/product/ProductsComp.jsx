@@ -27,20 +27,16 @@ const Products = () => {
 
 	const [itemOffset, setItemOffset] = useState(0)
 	const endOffset = itemOffset + perPage
-	const paginatedProducts = products.slice(itemOffset, endOffset)
-	const pageCount = Math.ceil(products.length / perPage)
+	const paginatedProducts = products?.slice(itemOffset, endOffset)
+	const pageCount = Math.ceil(products?.length / perPage)
 
 	const handlePageClick = (event) => {
-		const newOffset = (event.selected * perPage) % products.length
-		setItemOffset(newOffset)
+		const newOffset = (event.selected * perPage) % products?.length
+		setItemOffset(() => newOffset)
 		productsContainerRef.current.scrollIntoView({
 			behavior: "smooth",
 			block: "start",
 		})
-	}
-
-	const sortPriceRange = () => {
-		dispatch(sortProductByPriceRange(priceRange))
 	}
 
 	const productViaCat = () => {
@@ -51,18 +47,7 @@ const Products = () => {
 		dispatch(getProducts())
 	}
 
-	// no need to dispatch sortProductsByTitle action.
-	// beacause its dispatched from the input component.
-	// just need to dispatch getProductsViaCategory action when category is changed
-	/*
-		useEffect(() => {
-			const triggerQueryAction = setTimeout(() => {
-				if (category && !q) productViaCat()
-			}, 850)
-
-			return () => clearTimeout(triggerQueryAction)
-		}, [q])
-	*/
+	console.log("rendered!")
 
 	useEffect(() => {
 		if (category) productViaCat()
