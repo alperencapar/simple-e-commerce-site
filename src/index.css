@@ -62,14 +62,6 @@ header {
 	object-fit: contain;
 }
 
-.cart-items .cart-item .card {
-	/* max-height: 13.5rem; */
-}
-
-.cart-items .cart-item .card-body {
-	/* max-height: 13rem; */
-}
-
 .cart-items .cart-item .card-body > .row > div,
 .cart-items .cart-item .card-body > .row > div img {
 	height: 100%;

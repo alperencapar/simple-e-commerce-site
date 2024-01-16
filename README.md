@@ -1,4 +1,4 @@
--   cart delete from cart btn fix(can wait until x sass)
+-   cart delete from cart btn fix(can wait until x sass)✅
 -   categories page style✅
 -   add slider✅
 -   add paginate✅
