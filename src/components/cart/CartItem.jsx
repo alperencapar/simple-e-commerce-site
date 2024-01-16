@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { useDispatch } from "react-redux"
 import { changeQuantity, removeFromCart } from "../../features/cart/cartSlice"
-import { FaMinus, FaPlus } from "react-icons/fa"
+import { FaMinus, FaPlus, FaTrash } from "react-icons/fa"
 
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -52,10 +52,6 @@ const CartItem = ({ item }) => {
 			quantityRef.current.value = newVal
 			handleQuantityChange(quantityRef.current.value)
 		}
-		// else {
-		// 	quantityRef.current.value = 1
-		// 	handleQuantityChange(quantityRef.current.value)
-		// }
 	}
 
 	const quantityDecrement = () => {
@@ -74,7 +70,7 @@ const CartItem = ({ item }) => {
 					<Card data-bs-theme="light">
 						<Card.Body>
 							<Row>
-								<Col sm={3}>
+								<Col className="align-self-center" sm={3}>
 									<Card.Img src={item.image} />
 								</Col>
 
@@ -106,11 +102,19 @@ const CartItem = ({ item }) => {
 											</tbody>
 										</Table>
 
-										<Row className="d-sm-flex d-grid">
-											<Col
-												sm={6}
-												className="quantity-action-btns"
-											>
+										<Row className="d-sm-flex d-grid gap-sm-0 gap-2">
+											<Col className="quantity-action-btns d-flex gap-4">
+												<Button
+													variant="danger"
+													onClick={() =>
+														handleDeleteItem(
+															item.id
+														)
+													}
+												>
+													<FaTrash />
+												</Button>
+
 												<InputGroup>
 													<Button
 														onClick={() =>
@@ -142,19 +146,6 @@ const CartItem = ({ item }) => {
 														<FaPlus />
 													</Button>
 												</InputGroup>
-											</Col>
-
-											<Col sm={6}>
-												<Button
-													variant="danger"
-													onClick={() =>
-														handleDeleteItem(
-															item.id
-														)
-													}
-												>
-													Delete From Cart
-												</Button>
 											</Col>
 										</Row>
 									</Row>

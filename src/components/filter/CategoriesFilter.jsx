@@ -11,7 +11,7 @@ const CategoriesFilter = () => {
 
 	useEffect(() => {
 		dispatch(getAllCategories())
-	}, [dispatch])
+	}, [])
 
 	return (
 		<>

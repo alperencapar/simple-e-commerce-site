@@ -3,20 +3,25 @@ import { changeCategory } from "../../features/filter/filterSlice"
 import { getProductsViaCategory } from "../../features/product/productSlice"
 import NavItem from "react-bootstrap/NavItem"
 import Button from "react-bootstrap/Button"
+import { useCallback } from "react"
 
 const Category = ({ category }) => {
 	const dispatch = useDispatch()
 	const { category: filterCategory } = useSelector((state) => state.filters)
 
-	const handleClick = (categoryName) => {
-		if (categoryName === filterCategory) {
-			dispatch(changeCategory(""))
-			return
-		} else {
-			dispatch(changeCategory(categoryName))
-			dispatch(getProductsViaCategory())
-		}
-	}
+	const handleClick = useCallback(
+		(categoryName) => {
+			if (categoryName === filterCategory) {
+				dispatch(changeCategory(""))
+				return
+			} else {
+				dispatch(changeCategory(categoryName))
+				dispatch(getProductsViaCategory())
+			}
+		},
+		[filterCategory]
+	)
+
 	return (
 		<>
 			<NavItem as="li" onClick={() => handleClick(category)}>

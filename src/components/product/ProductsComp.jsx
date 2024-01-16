@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState, useRef, useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {
 	getProducts,
@@ -12,23 +12,25 @@ import { useParams } from "react-router-dom"
 import ReactPaginate from "react-paginate"
 
 import Nav from "react-bootstrap/Nav"
-import { useRef } from "react"
 
 const Products = () => {
 	const dispatch = useDispatch()
 	const productsContainerRef = useRef()
+	const { categoryName } = useParams()
 
 	let { products } = useSelector((state) => state.products)
 	const { q, category, sorting, perPage, priceRange } = useSelector(
 		(state) => state.filters
 	)
 
-	const { categoryName } = useParams()
-
 	const [itemOffset, setItemOffset] = useState(0)
 	const endOffset = itemOffset + perPage
-	const paginatedProducts = products?.slice(itemOffset, endOffset)
 	const pageCount = Math.ceil(products?.length / perPage)
+
+	const paginatedProducts = useMemo(
+		() => products?.slice(itemOffset, endOffset),
+		[itemOffset, products]
+	)
 
 	const handlePageClick = (event) => {
 		const newOffset = (event.selected * perPage) % products?.length
@@ -47,10 +49,11 @@ const Products = () => {
 		dispatch(getProducts())
 	}
 
-	console.log("rendered!")
-
 	useEffect(() => {
-		if (category) productViaCat()
+		if (category) {
+			productViaCat()
+			handlePageClick({ selected: 0 })
+		}
 
 		if (!category && !q) {
 			if (!categoryName) {
@@ -62,7 +65,7 @@ const Products = () => {
 	return (
 		<>
 			<div
-				className="products d-md-grid d-block"
+				className="products d-lg-grid d-block"
 				ref={productsContainerRef}
 			>
 				{paginatedProducts?.map((product) => (
@@ -93,6 +96,7 @@ const Products = () => {
 					breakLinkClassName="page-link"
 					activeClassName="active"
 					disabledClassName="disabled"
+					key={pageCount} // or --> products?.length
 				/>
 			</Nav>
 		</>

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../features/cart/cartSlice"
 import { Link } from "react-router-dom"
@@ -36,30 +36,35 @@ const Product = ({ product }) => {
 		)
 	}
 
-	const truncateSentence = (sentence, maxWordCountLimit = 4) => {
-		const splitedSentence = sentence.split(" ")
-		const wordCount = Number(splitedSentence.length)
-		if (wordCount > maxWordCountLimit) {
-			const truncatedArrSentence = splitedSentence.map((word, index) => {
-				if (maxWordCountLimit >= index) {
-					return word
-				}
-			})
+	const truncateSentence = useCallback(
+		(sentence, maxWordCountLimit = 4) => {
+			const splitedSentence = sentence.split(" ")
+			const wordCount = Number(splitedSentence.length)
+			if (wordCount > maxWordCountLimit) {
+				const truncatedArrSentence = splitedSentence.map(
+					(word, index) => {
+						if (maxWordCountLimit >= index) {
+							return word
+						}
+					}
+				)
 
-			let truncatedStr = truncatedArrSentence.join(" ")
-			truncatedStr = truncatedStr.trimEnd()
-			// truncatedStr = truncatedStr.slice(0, -1) + "..."
-			truncatedStr = truncatedStr + "..."
+				let truncatedStr = truncatedArrSentence.join(" ")
+				truncatedStr = truncatedStr.trimEnd()
+				// truncatedStr = truncatedStr.slice(0, -1) + "..."
+				truncatedStr = truncatedStr + "..."
 
-			return truncatedStr
-		} else {
-			return sentence
-		}
-	}
+				return truncatedStr
+			} else {
+				return sentence
+			}
+		},
+		[product?.description]
+	)
 
 	return (
 		<>
-			<Card className="p-3" data-bs-theme="light">
+			<Card className="p-3 mb-4 mb-lg-0" data-bs-theme="light">
 				<Link to={"/products/" + product.id}>
 					<Card.Img variant="top" src={product.image} />
 				</Link>

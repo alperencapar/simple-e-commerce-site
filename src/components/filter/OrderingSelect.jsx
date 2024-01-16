@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { SORT } from "../../utils/ordering"
 import { changePricingOrder } from "../../features/filter/filterSlice"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { sortProductOrder } from "../../features/product/productSlice"
 
 import Form from "react-bootstrap/Form"
@@ -17,8 +17,13 @@ const OrderingSelect = () => {
 		dispatch(changePricingOrder(val))
 	}
 
-	useEffect(() => {
+	const handleSorting = useCallback(() => {
 		dispatch(sortProductOrder(sorting))
+	}, [sorting])
+
+	useEffect(() => {
+		handleSorting()
+		// dispatch(sortProductOrder(sorting))
 	}, [sorting])
 
 	return (

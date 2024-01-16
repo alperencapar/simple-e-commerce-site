@@ -57,6 +57,24 @@ header {
 	object-fit: contain;
 }
 
+.cart-items .cart-item img {
+	max-height: 19rem;
+	object-fit: contain;
+}
+
+.cart-items .cart-item .card {
+	/* max-height: 13.5rem; */
+}
+
+.cart-items .cart-item .card-body {
+	/* max-height: 13rem; */
+}
+
+.cart-items .cart-item .card-body > .row > div,
+.cart-items .cart-item .card-body > .row > div img {
+	height: 100%;
+}
+
 .cart-items .cart-item .input-group {
 	max-width: 12rem;
 }
@@ -109,6 +127,10 @@ aside.cart-aside {
 	.filters .form-filter-container,
 	.filters .form-filter-container input {
 		width: 100% !important;
+	}
+
+	.cart-items .cart-item .input-group {
+		max-width: unset;
 	}
 }
 

@@ -5,4 +5,4 @@
 -   add sass
 -   loading component
 -   add price range and pagination filter
--   add framer motion to cart icon at header
+-   add framer motion to cart icon at header✅

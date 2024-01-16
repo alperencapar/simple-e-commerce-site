@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom"
 
 const BreadcrumbItem = ({ item }) => {
 	const navigate = useNavigate()
+
 	const handleClick = () => {
 		if (item?.url !== "") navigate(item.url)
 	}
+
 	return (
 		<>
 			<li>
