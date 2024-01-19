@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
 	q: "",
 	category: "",
-	sorting: null,
+	sorting: "",
 	perPage: 6,
 	priceRange: {
 		min: 0,
@@ -19,13 +19,20 @@ const filterSlice = createSlice({
 			state.q = payload
 		},
 		changeCategory: (state, { payload }) => {
-			state.category = payload
+			state.category = payload.toLowerCase()
 		},
 		changePricingOrder: (state, { payload }) => {
-			state.sorting = payload
+			state.sorting = payload.toLowerCase()
 		},
 		changePerPage: (state, { payload }) => {
-			state.perPage = payload
+			let newPayload
+			if (payload) {
+				newPayload = parseInt(payload)
+				newPayload = payload >= 3 ? payload : 6
+				state.perPage = newPayload
+			} else {
+				state.perPage = 6
+			}
 		},
 		changePriceRange: (state, { payload }) => {
 			state.perPage = payload

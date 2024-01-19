@@ -24,7 +24,7 @@ const CartItem = ({ item }) => {
 		dispatch(
 			changeQuantity({
 				...item,
-				quantity: Number(quantity),
+				quantity: parseInt(quantity),
 			})
 		)
 	}
@@ -34,7 +34,7 @@ const CartItem = ({ item }) => {
 	}
 
 	const handleInputChange = () => {
-		const inputVal = Number(quantityRef.current.value)
+		const inputVal = parseInt(quantityRef.current.value)
 		const isNumberBiggerThanZero = checkIsPositiveVal(inputVal)
 		if (isNumberBiggerThanZero) {
 			quantityRef.current.value = inputVal
@@ -46,7 +46,7 @@ const CartItem = ({ item }) => {
 	}
 
 	const quantityIncrement = () => {
-		const newVal = Number(quantityRef.current.value) + 1
+		const newVal = parseInt(quantityRef.current.value) + 1
 		const isNumberBiggerThanZero = checkIsPositiveVal(newVal)
 		if (isNumberBiggerThanZero) {
 			quantityRef.current.value = newVal
@@ -55,7 +55,7 @@ const CartItem = ({ item }) => {
 	}
 
 	const quantityDecrement = () => {
-		const newVal = Number(quantityRef.current.value) - 1
+		const newVal = parseInt(quantityRef.current.value) - 1
 		const isNumberBiggerThanZero = checkIsPositiveVal(newVal)
 		if (isNumberBiggerThanZero) {
 			quantityRef.current.value = newVal

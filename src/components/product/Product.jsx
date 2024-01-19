@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../features/cart/cartSlice"
 import { Link } from "react-router-dom"
@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import Spinner from "react-bootstrap/Spinner"
+import truncateText from "../../utils/truncateText"
 
 const Product = ({ product }) => {
 	const [loadingEffect, setLoadingEffect] = useState()
@@ -19,7 +20,7 @@ const Product = ({ product }) => {
 
 		setTimeout(() => {
 			setLoadingEffect(() => false)
-		}, 900)
+		}, 700)
 	}
 
 	const handleAddToCartClick = () => {
@@ -35,32 +36,6 @@ const Product = ({ product }) => {
 			})
 		)
 	}
-
-	const truncateSentence = useCallback(
-		(sentence, maxWordCountLimit = 4) => {
-			const splitedSentence = sentence.split(" ")
-			const wordCount = Number(splitedSentence.length)
-			if (wordCount > maxWordCountLimit) {
-				const truncatedArrSentence = splitedSentence.map(
-					(word, index) => {
-						if (maxWordCountLimit >= index) {
-							return word
-						}
-					}
-				)
-
-				let truncatedStr = truncatedArrSentence.join(" ")
-				truncatedStr = truncatedStr.trimEnd()
-				// truncatedStr = truncatedStr.slice(0, -1) + "..."
-				truncatedStr = truncatedStr + "..."
-
-				return truncatedStr
-			} else {
-				return sentence
-			}
-		},
-		[product?.description]
-	)
 
 	return (
 		<>
@@ -88,7 +63,7 @@ const Product = ({ product }) => {
 					</Row>
 
 					<Card.Text>
-						{truncateSentence(product?.description)}
+						{truncateText(product?.description, 4)}
 					</Card.Text>
 					<Button
 						className="align-self-end"
@@ -104,10 +79,9 @@ const Product = ({ product }) => {
 									aria-hidden="true"
 									className="me-1"
 								/>
-								<span>Adding To Cart</span>
 							</>
 						)}
-						{!loadingEffect && <span>Add To Cart</span>}
+						<span>Add To Cart</span>
 					</Button>
 				</Card.Body>
 			</Card>

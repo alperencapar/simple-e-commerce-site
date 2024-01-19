@@ -65,7 +65,7 @@ const SliderComp = () => {
 									/>
 								</Col>
 								<Col
-									className="d-flex flex-column justify-content-center"
+									className="d-flex flex-column justify-content-center mb-4"
 									sm={5}
 								>
 									<h3 className="mx-2">{SliderItem.text}</h3>

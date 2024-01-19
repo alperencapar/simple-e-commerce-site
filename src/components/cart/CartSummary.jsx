@@ -48,16 +48,20 @@ const CartSummary = () => {
 											variant="danger"
 											onClick={clearTheCartItems}
 										>
-											<FaTrash />{" "}
-											<span>Clear The Cart</span>
+											<FaTrash /> <span>Clear Cart</span>
 										</Button>
 									</Col>
 								</Row>
 							</div>
 
 							<Row>
-								<Col>Total Pricing:</Col>
-								<Col>${total && total}</Col>
+								<Col>
+									<span>Total Pricing:</span>
+
+									<span className="ms-2">
+										${total && total}
+									</span>
+								</Col>
 							</Row>
 						</Card.Body>
 					</Card>

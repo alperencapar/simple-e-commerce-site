@@ -1,5 +1,3 @@
-import OrderingSelect from "./OrderingSelect"
-import Input from "./Input"
 import TopFilters from "./TopFilters"
 
 const Filters = () => {

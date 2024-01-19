@@ -17,7 +17,10 @@ const CategoriesFilter = () => {
 		<>
 			<aside>
 				{categories && (
-					<Nav className="category-list d-grid gap-2" as="ul">
+					<Nav
+						className="category-list d-grid gap-2 pb-4 pb-sm-0"
+						as="ul"
+					>
 						<h5 className="text-center mb-1">Categories</h5>
 						{categories.map((category, i) => (
 							<Category key={i} category={category} />

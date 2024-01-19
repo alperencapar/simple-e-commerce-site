@@ -1,34 +1,42 @@
 import { useDispatch, useSelector } from "react-redux"
 import { SORT } from "../../utils/ordering"
 import { changePricingOrder } from "../../features/filter/filterSlice"
-import { useCallback, useEffect } from "react"
+import { useEffect } from "react"
 import { sortProductOrder } from "../../features/product/productSlice"
 
-import Form from "react-bootstrap/Form"
+import Select from "../form/Select"
 
 const OrderingSelect = () => {
 	const { sorting } = useSelector((state) => state.filters)
 	const dispatch = useDispatch()
-	const orderKeys = Object.keys(SORT)
 
 	const handleChange = (e) => {
 		const val = e.target.value
-
 		dispatch(changePricingOrder(val))
 	}
 
-	const handleSorting = useCallback(() => {
+	const handleSorting = () => {
 		dispatch(sortProductOrder(sorting))
-	}, [sorting])
+	}
 
 	useEffect(() => {
-		handleSorting()
-		// dispatch(sortProductOrder(sorting))
+		if (sorting) {
+			handleSorting()
+		}
 	}, [sorting])
 
 	return (
 		<>
-			<Form.Select
+			<Select
+				aria-label="Sort product by price order"
+				name="sorting"
+				size="sm"
+				onChange={(e) => handleChange(e)}
+				className="w-auto"
+				defaultValue={sorting && sorting}
+				data={SORT}
+			/>
+			{/* <Form.Select
 				aria-label="Sort product by price order"
 				name="sorting"
 				size="sm"
@@ -39,9 +47,13 @@ const OrderingSelect = () => {
 				<option value="" defaultValue>
 					Select ordering
 				</option>
-				<option value={SORT.ASC}>{orderKeys[0]}</option>
-				<option value={SORT.DESC}>{orderKeys[1]}</option>
-			</Form.Select>
+				{orderKeys &&
+					orderKeys.map((obj, i) => (
+						<option key={obj[0]} value={obj[0]}>
+							{obj[1]}
+						</option>
+					))}
+			</Form.Select> */}
 		</>
 	)
 }

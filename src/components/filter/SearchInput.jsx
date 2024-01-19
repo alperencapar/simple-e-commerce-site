@@ -6,9 +6,9 @@ import {
 	getProductsViaCategory,
 	sortProductsByTitle,
 } from "../../features/product/productSlice"
-import Form from "react-bootstrap/Form"
+import Input from "../form/Input"
 
-const Input = () => {
+const SearchInput = () => {
 	const [queryVal, setQueryVal] = useState("")
 	const [onQuery, setonQuery] = useState(false)
 	const { q, category } = useSelector((state) => state.filters)
@@ -17,7 +17,14 @@ const Input = () => {
 	useEffect(() => {
 		const triggerAction = setTimeout(() => {
 			dispatch(sortProductsByTitle(q))
-		}, 750)
+
+			//to reset products
+			if (!q && category) {
+				dispatch(getProductsViaCategory())
+			} else if (!queryVal && !category) {
+				dispatch(getProducts())
+			}
+		}, 1000)
 
 		return () => clearTimeout(triggerAction)
 	}, [q])
@@ -30,16 +37,7 @@ const Input = () => {
 	useEffect(() => {
 		const triggerQueryAction = setTimeout(() => {
 			if (onQuery) {
-				if (queryVal) {
-					dispatch(changeQuery(queryVal))
-				}
-
-				//to reset products
-				if (!queryVal && category) {
-					dispatch(getProductsViaCategory())
-				} else if (!queryVal && !category) {
-					dispatch(getProducts())
-				}
+				dispatch(changeQuery(queryVal))
 			}
 		}, 850)
 
@@ -48,7 +46,7 @@ const Input = () => {
 
 	return (
 		<>
-			<Form.Control
+			<Input
 				type="search"
 				name="q"
 				id=""
@@ -61,4 +59,4 @@ const Input = () => {
 	)
 }
 
-export default Input
+export default SearchInput

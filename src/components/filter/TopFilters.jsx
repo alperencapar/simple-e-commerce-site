@@ -1,9 +1,9 @@
 import Form from "react-bootstrap/Form"
 import OrderingSelect from "./OrderingSelect"
-import Input from "./Input"
+import SearchInput from "./SearchInput"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
+import PerPageSelect from "./perPageSelect"
 
 const TopFilters = () => {
 	const handleReload = (e) => {
@@ -20,10 +20,9 @@ const TopFilters = () => {
 					>
 						<div className="form-filter-container d-flex gap-3">
 							<OrderingSelect />
-							<Input />
+							<PerPageSelect />
+							<SearchInput />
 						</div>
-						{/* <Col sm={3}></Col>
-					<Col></Col> */}
 					</Form>
 				</Row>
 			</Container>
