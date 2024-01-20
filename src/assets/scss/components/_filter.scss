@@ -1,0 +1,9 @@
+// breakpoint
+.filters {
+	@include media-breakpoint-down(md) {
+		.form-filter-container,
+		& input {
+			width: 100% !important;
+		}
+	}
+}

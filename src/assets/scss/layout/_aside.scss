@@ -1,0 +1,9 @@
+aside {
+	&.cart-aside {
+		padding-left: 0;
+
+		@include media-breakpoint-up(lg) {
+			padding-left: 1.5rem;
+		}
+	}
+}

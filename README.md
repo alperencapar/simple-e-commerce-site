@@ -1,2 +1,1 @@
--   add sass
 -   loading component for products grid

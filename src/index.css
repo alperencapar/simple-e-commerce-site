@@ -1,3 +1,4 @@
+/* 
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
@@ -23,7 +24,6 @@ body {
 
 #root {
 	min-height: 100vh;
-	/* min-width: 100%; */
 	width: min(100%, 100%);
 }
 
@@ -43,9 +43,6 @@ header {
 
 .products {
 	display: grid;
-	/* grid-template-columns: minmax(12.5rem, 15rem); */
-	/* grid-template-columns: repeat(3, minmax(12.5rem, 15rem)); */
-	/* grid-template-columns: repeat(3, minmax(16.25rem, 1fr)); */
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1.5rem;
 	scroll-margin: 8rem;
@@ -131,3 +128,4 @@ aside.cart-aside {
 		padding-left: 1.5rem;
 	}
 }
+*/

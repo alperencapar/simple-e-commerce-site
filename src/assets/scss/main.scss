@@ -1,0 +1,18 @@
+// @import "abstracts/variables";
+
+@import "vendors/bootstrap";
+
+@import "base/typography";
+@import "abstracts/global";
+
+// comp
+@import "./components/form";
+
+// layout
+@import "./layout/header";
+
+// pages
+@import "./pages/cart.scss";
+@import "./pages/categories.scss";
+@import "./pages/home.scss";
+@import "./pages/products.scss";

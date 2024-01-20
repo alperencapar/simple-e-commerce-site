@@ -1,0 +1,23 @@
+body {
+	margin: 0;
+	display: flex;
+	place-items: center;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+#root {
+	min-height: 100vh;
+	/* min-width: 100%; */
+	width: min(100%, 100%);
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+svg {
+	height: 1.5rem;
+	width: 1.5rem;
+}

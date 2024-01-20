@@ -48,10 +48,10 @@ export const getProductsViaCategory = createAsyncThunk(
 			}
 
 			return response
+		} else {
+			// 	thunkAPI.dispatch(getProducts())
+			return thunkAPI.getState().products.products
 		}
-		// else {
-		// 	thunkAPI.dispatch(getProducts())
-		// }
 	}
 )
 

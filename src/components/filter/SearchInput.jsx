@@ -16,12 +16,12 @@ const SearchInput = () => {
 
 	useEffect(() => {
 		const triggerAction = setTimeout(() => {
-			dispatch(sortProductsByTitle(q))
+			if (q) dispatch(sortProductsByTitle(q))
 
 			//to reset products
 			if (!q && category) {
 				dispatch(getProductsViaCategory())
-			} else if (!queryVal && !category) {
+			} else if (!q && !category && onQuery) {
 				dispatch(getProducts())
 			}
 		}, 1000)

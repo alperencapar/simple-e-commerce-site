@@ -13,7 +13,9 @@ const Category = () => {
 	const { categoryName } = useParams()
 
 	useEffect(() => {
-		dispatch(changeCategory(categoryName))
+		if (categoryName) {
+			dispatch(changeCategory(categoryName))
+		}
 
 		return () => dispatch(changeCategory(""))
 	}, [categoryName])

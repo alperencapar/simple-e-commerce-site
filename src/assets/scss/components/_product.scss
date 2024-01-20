@@ -1,0 +1,12 @@
+.products {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	scroll-margin: 8rem;
+
+	.card .card-img-top {
+		max-height: 11.5rem;
+		aspect-ratio: 9/16;
+		object-fit: contain;
+	}
+}

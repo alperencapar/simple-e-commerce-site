@@ -1,0 +1,21 @@
+.slick-slider {
+	background-color: #fff;
+
+	.slick-track {
+		display: flex;
+		align-items: center;
+	}
+
+	img {
+		max-height: 50dvh;
+
+		&.img-thumbnail {
+			border: none;
+			background-color: transparent;
+		}
+	}
+
+	h3 {
+		color: #000;
+	}
+}

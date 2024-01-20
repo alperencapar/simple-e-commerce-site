@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom"
-import "./App.css"
 
 import Home from "./pages/Home"
 import Products from "./pages/Products"
@@ -9,9 +8,6 @@ import Category from "./pages/Category"
 import Categories from "./pages/Categories"
 import Cart from "./pages/Cart"
 import Header from "./components/header/Header"
-
-// ! TEMPORARY
-import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
 	return (
