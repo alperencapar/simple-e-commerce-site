@@ -4,10 +4,12 @@ import { getAllCategories } from "../../features/category/categorySlice"
 import { useEffect } from "react"
 
 import Nav from "react-bootstrap/Nav"
+import { STATUS } from "../../utils/status"
+import Loading from "../loading/Loading"
 
 const CategoriesFilter = () => {
 	const dispatch = useDispatch()
-	const { categories } = useSelector((state) => state.categories)
+	const { categories, status } = useSelector((state) => state.categories)
 
 	useEffect(() => {
 		dispatch(getAllCategories())
@@ -26,6 +28,16 @@ const CategoriesFilter = () => {
 							<Category key={i} category={category} />
 						))}
 					</Nav>
+				)}
+
+				{status === STATUS.LOADING && (
+					<>
+						<Loading
+							count={4}
+							containerClassName="category-list d-grid gap-2 pb-4 pb-sm-0 category-list-loading"
+							as="ul"
+						/>
+					</>
 				)}
 			</aside>
 		</>

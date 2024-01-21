@@ -7,14 +7,15 @@ import {
 import { useParams } from "react-router-dom"
 import ProductsPaginate from "./ProductsPaginate"
 import { STATUS } from "../../utils/status"
+import Loading from "../loading/Loading"
 
 const Products = () => {
 	const dispatch = useDispatch()
 	// const productsContainerRef = useRef()
 	const { categoryName } = useParams()
 
-	let { products } = useSelector((state) => state.products)
-	const { q, category, sorting, priceRange } = useSelector(
+	let { products, productsStatus } = useSelector((state) => state.products)
+	const { q, category, perPage, priceRange } = useSelector(
 		(state) => state.filters
 	)
 
@@ -43,8 +44,19 @@ const Products = () => {
 
 	return (
 		<>
-			{products && Object.keys(products).length > 0 && (
-				<ProductsPaginate products={products} />
+			{productsStatus === STATUS.SUCCESS &&
+				Object.keys(products).length > 0 && (
+					<ProductsPaginate products={products} />
+				)}
+
+			{productsStatus === STATUS.LOADING && (
+				<>
+					<Loading
+						count={perPage}
+						className="p-3 mb-4 mb-lg-0 card"
+						containerClassName="products d-lg-grid d-block"
+					/>
+				</>
 			)}
 		</>
 	)

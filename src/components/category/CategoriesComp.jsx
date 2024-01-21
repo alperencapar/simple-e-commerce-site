@@ -4,9 +4,11 @@ import Category from "./Category"
 import { getAllCategories } from "../../features/category/categorySlice"
 
 import Container from "react-bootstrap/Container"
+import Loading from "../loading/Loading"
+import { STATUS } from "../../utils/status"
 
 const CategoriesComp = () => {
-	const { categories } = useSelector((state) => state.categories)
+	const { categories, status } = useSelector((state) => state.categories)
 
 	const dispatch = useDispatch()
 
@@ -24,6 +26,14 @@ const CategoriesComp = () => {
 					<Category key={i} category={cat} />
 				))}
 			</div>
+
+			{status === STATUS.LOADING && (
+				<Loading
+					count={4}
+					className="card"
+					containerClassName="categories-container"
+				/>
+			)}
 		</Container>
 	)
 }
