@@ -24,8 +24,8 @@ const CartComp = () => {
 						<Row>
 							<Col lg={8}>
 								<ul className="cart-items d-grid gap-3">
-									{cartItems.map((item, i) => (
-										<CartItem key={i} item={item} />
+									{cartItems.map((item) => (
+										<CartItem key={item.id} item={item} />
 									))}
 								</ul>
 							</Col>

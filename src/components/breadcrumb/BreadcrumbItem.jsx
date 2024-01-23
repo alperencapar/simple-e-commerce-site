@@ -1,6 +1,8 @@
 import { FaChevronRight } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 
+import Button from "react-bootstrap/Button"
+
 const BreadcrumbItem = ({ item }) => {
 	const navigate = useNavigate()
 
@@ -11,10 +13,10 @@ const BreadcrumbItem = ({ item }) => {
 	return (
 		<>
 			<li>
-				<button onClick={() => handleClick()}>
+				<Button onClick={() => handleClick()} variant="link">
 					<FaChevronRight />
 					<span>{item.name}</span>
-				</button>
+				</Button>
 			</li>
 		</>
 	)
