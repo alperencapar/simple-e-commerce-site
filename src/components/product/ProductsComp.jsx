@@ -4,20 +4,15 @@ import {
 	getProducts,
 	getProductsViaCategory,
 } from "../../features/product/productSlice"
-import { useParams } from "react-router-dom"
 import ProductsPaginate from "./ProductsPaginate"
 import { STATUS } from "../../utils/status"
 import Loading from "../loading/Loading"
 
 const Products = () => {
 	const dispatch = useDispatch()
-	// const productsContainerRef = useRef()
-	const { categoryName } = useParams()
 
 	let { products, productsStatus } = useSelector((state) => state.products)
-	const { q, category, perPage, priceRange } = useSelector(
-		(state) => state.filters
-	)
+	const { category, perPage } = useSelector((state) => state.filters)
 
 	const productViaCat = () => {
 		dispatch(getProductsViaCategory())
@@ -32,11 +27,6 @@ const Products = () => {
 			productViaCat()
 		}
 
-		// if (!category && !q) {
-		// 	if (!categoryName) {
-		// 		getAllProducts()
-		// 	}
-		// }
 		if (!category) {
 			getAllProducts()
 		}

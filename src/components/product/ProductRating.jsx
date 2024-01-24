@@ -5,8 +5,6 @@ const ProductRating = ({ rating }) => {
 	const isFloated = Boolean(rating % fullStarCount)
 	const remainingStarCount = Math.floor(5 - parseFloat(rating))
 
-	console.log(remainingStarCount)
-
 	const handleStars = () => {
 		let starElements = [...Array(fullStarCount)].map((key, i) => {
 			if (fullStarCount >= i + 1) {

@@ -16,29 +16,6 @@ const ProductsPaginate = ({ products }) => {
 		[itemOffset, products, perPage]
 	)
 
-	/* 
-	const handlePageClick = (event) => {
-		const newOffset = (event.selected * perPage) % products?.length
-		setItemOffset(() => newOffset)
-		productsContainerRef.current.scrollIntoView({
-			behavior: "smooth",
-			block: "start",
-		})
-	}
-
-	useEffect(() => {
-		if (category) handlePageClick({ selected: 0 })
-	}, [category])
-
-	useEffect(() => {
-		if (itemOffset !== 0)
-			productsContainerRef.current.scrollIntoView({
-				behavior: "smooth",
-				block: "start",
-			})
-	}, [category])
-	 */
-
 	return (
 		<>
 			<div

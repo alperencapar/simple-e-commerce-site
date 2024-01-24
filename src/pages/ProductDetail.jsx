@@ -5,7 +5,6 @@ import { getProduct } from "../features/product/productSlice"
 import { addToCart } from "../features/cart/cartSlice"
 import Breadcrumbs from "../components/breadcrumb/Breadcrumbs"
 import { FaMinus, FaPlus } from "react-icons/fa"
-import Alert from "../components/alert/Alert"
 
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -21,7 +20,6 @@ const ProductDetail = () => {
 	const [quantity, setQuantity] = useState(1)
 
 	const { product } = useSelector((state) => state.products)
-	const { cartItems } = useSelector((state) => state.carts)
 	const { productId } = useParams()
 
 	const breadcrumbData = [

@@ -1,4 +1,3 @@
-import React from "react"
 import BreadcrumbItem from "./BreadcrumbItem"
 
 const Breadcrumbs = ({ breadcrumbs }) => {

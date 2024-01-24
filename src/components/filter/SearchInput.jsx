@@ -53,6 +53,11 @@ const SearchInput = () => {
 				placeholder="Search product title"
 				onChange={(e) => handleInputChange(e)}
 				onFocus={() => setonQuery(true)}
+				onBlur={() =>
+					setTimeout(() => {
+						setonQuery(false)
+					}, 2000)
+				}
 				className="w-auto"
 			/>
 		</>

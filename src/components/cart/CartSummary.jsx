@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { clearCart, getTotalPrice } from "../../features/cart/cartSlice"
 
