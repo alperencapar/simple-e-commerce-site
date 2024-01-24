@@ -2,10 +2,7 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa"
 
 const ProductRating = ({ rating }) => {
 	const fullStars = parseInt(rating)
-	// const floatStar = rating % fullStars
 	const isHalfOrMore = rating % fullStars >= 0.5
-
-	console.log("isHalfOrMore: ", isHalfOrMore)
 
 	return (
 		<>
