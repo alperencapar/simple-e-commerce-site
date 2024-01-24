@@ -14,6 +14,7 @@ import Card from "react-bootstrap/Card"
 import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
 import Button from "react-bootstrap/Button"
+import ProductRating from "../components/product/ProductRating"
 
 const ProductDetail = () => {
 	const dispatch = useDispatch()
@@ -102,24 +103,41 @@ const ProductDetail = () => {
 													<p aria-label="Product Info Description">
 														{product?.description}
 													</p>
-													<p aria-label="price">
-														${product?.price}
-													</p>
-													<div className="rating">
-														<span>
-															rating:{" "}
-															{
-																product?.rating
-																	?.rate
-															}
-														</span>
-														<span>
-															rate count:{" "}
-															{
-																product?.rating
-																	?.count
-															}
-														</span>
+													<div>
+														<Row>
+															<Col className="d-flex gap-1">
+																<span>
+																	Product
+																	Price:{" "}
+																</span>
+																<p aria-label="price">
+																	$
+																	{
+																		product?.price
+																	}
+																</p>
+															</Col>
+															<Col>
+																<span>
+																	<ProductRating
+																		rating={
+																			product
+																				?.rating
+																				?.rate
+																		}
+																	/>
+																</span>
+																<span>
+																	Reviewed{" "}
+																	{
+																		product
+																			?.rating
+																			?.count
+																	}{" "}
+																	times
+																</span>
+															</Col>
+														</Row>
 													</div>
 												</div>
 											</div>
