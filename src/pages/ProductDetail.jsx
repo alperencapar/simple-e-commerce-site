@@ -30,7 +30,7 @@ const ProductDetail = () => {
 		},
 		{
 			name: "category",
-			url: `/category/${product?.category}`,
+			url: `/categories/${product?.category}`,
 		},
 	]
 
