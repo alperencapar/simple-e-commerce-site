@@ -95,8 +95,10 @@ const CartItem = ({ item }) => {
 													<td>x{item.quantity} </td>
 													<td>
 														$
-														{item.quantity *
-															item.price}{" "}
+														{parseFloat(
+															item.quantity *
+																item.price
+														).toFixed(2)}{" "}
 													</td>
 												</tr>
 											</tbody>
