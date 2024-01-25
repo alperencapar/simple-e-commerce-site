@@ -16,7 +16,6 @@ const Category = ({ category }) => {
 				return
 			} else {
 				dispatch(changeCategory(categoryName))
-				dispatch(getProductsViaCategory())
 			}
 		},
 		[filterCategory]
