@@ -6,7 +6,7 @@ import paginateItems from "../../utils/paginateItems"
 
 const ProductsPaginate = ({ products }) => {
 	const productsContainerRef = useRef()
-	const { perPage } = useSelector((state) => state.filters)
+	const { sorting, perPage } = useSelector((state) => state.filters)
 
 	// every time state is updated, component will re-render.
 	const [itemOffset, setItemOffset] = useState(0)
@@ -16,11 +16,11 @@ const ProductsPaginate = ({ products }) => {
 		[itemOffset, products, perPage]
 	)
 
-	// reset page to 1 when products are changed
+	// reset page to 1 when products and select filters are changed
 	// products'll change when query input has value
 	useEffect(() => {
 		setItemOffset(() => 0)
-	}, [products])
+	}, [products, sorting])
 
 	return (
 		<>

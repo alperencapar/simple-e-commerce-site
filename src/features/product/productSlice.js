@@ -65,14 +65,17 @@ const productSlice = createSlice({
 	reducers: {
 		sortProductsByTitle: (state, { payload }) => {
 			if (payload !== "") {
+				state.productsStatus = STATUS.LOADING
 				const tempProducts = state.products.filter((product) =>
 					product.title.toLowerCase().includes(payload)
 				)
 				state.products = tempProducts
+				state.productsStatus = STATUS.SUCCESS
 			}
 		},
 
 		sortProductOrder: (state, { payload }) => {
+			state.productsStatus = STATUS.LOADING
 			let tempProducts
 			if (payload === SORT.DESC) {
 				tempProducts = state.products.sort((a, b) => b.price - a.price)
@@ -83,9 +86,11 @@ const productSlice = createSlice({
 			}
 
 			state.products = tempProducts
+			state.productsStatus = STATUS.SUCCESS
 		},
 
 		sortProductByPriceRange: (state, { payload }) => {
+			state.productsStatus = STATUS.LOADING
 			//
 			let { min = 0 } = payload
 			let { max = 10000000 } = payload
@@ -93,6 +98,7 @@ const productSlice = createSlice({
 				(product) => product.price >= min && product.price <= max
 			)
 			state.products = tempProducts
+			state.productsStatus = STATUS.SUCCESS
 		},
 	},
 	extraReducers: (builder) => {
