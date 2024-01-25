@@ -7,6 +7,7 @@ import { getTotalPrice } from "../../features/cart/cartSlice"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Empty from "../empty/Empty"
 
 const CartComp = () => {
 	const dispatch = useDispatch()
@@ -16,9 +17,9 @@ const CartComp = () => {
 		dispatch(getTotalPrice())
 	}, [cartItems])
 
-	return (
-		<>
-			{cartItems?.length > 0 && (
+	const handleCartItemRender = () => {
+		if (cartItems?.length > 0) {
+			return (
 				<>
 					<Container className="mt-4">
 						<Row>
@@ -35,7 +36,22 @@ const CartComp = () => {
 						</Row>
 					</Container>
 				</>
-			)}
+			)
+		} else {
+			return (
+				<Empty variant={"warning"}>
+					<p>
+						You don't have any product in your cart. You should add
+						product your cart(optional)
+					</p>
+				</Empty>
+			)
+		}
+	}
+
+	return (
+		<>
+			<>{handleCartItemRender()}</>
 		</>
 	)
 }

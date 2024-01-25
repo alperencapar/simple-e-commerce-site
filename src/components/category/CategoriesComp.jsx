@@ -1,19 +1,18 @@
-import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Category from "./Category"
-import { getAllCategories } from "../../features/category/categorySlice"
 
 import Container from "react-bootstrap/Container"
 import Loading from "../loading/Loading"
 import { STATUS } from "../../utils/status"
+import { useEffect } from "react"
+import { getAllCategories } from "../../features/category/categorySlice"
 
 const CategoriesComp = () => {
 	const { categories, status } = useSelector((state) => state.categories)
-
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(getAllCategories())
+		if (status !== STATUS.LOADING) dispatch(getAllCategories())
 	}, [])
 
 	return (

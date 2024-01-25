@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { changeCategory } from "../../features/filter/filterSlice"
-import { getProductsViaCategory } from "../../features/product/productSlice"
+import {
+	getProducts,
+	getProductsViaCategory,
+} from "../../features/product/productSlice"
 import NavItem from "react-bootstrap/NavItem"
 import Button from "react-bootstrap/Button"
 import { useCallback } from "react"
@@ -13,9 +16,11 @@ const Category = ({ category }) => {
 		(categoryName) => {
 			if (categoryName === filterCategory) {
 				dispatch(changeCategory(""))
+				dispatch(getProducts())
 				return
 			} else {
 				dispatch(changeCategory(categoryName))
+				dispatch(getProductsViaCategory())
 			}
 		},
 		[filterCategory]
@@ -32,7 +37,6 @@ const Category = ({ category }) => {
 					{category}
 				</Button>
 			</NavItem>
-			{/* <li onClick={() => handleClick(category)}>{category}</li> */}
 		</>
 	)
 }

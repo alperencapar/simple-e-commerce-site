@@ -10,38 +10,28 @@ import Input from "../form/Input"
 
 const SearchInput = () => {
 	const [queryVal, setQueryVal] = useState("")
-	const [onQuery, setonQuery] = useState(false)
-	const { q, category } = useSelector((state) => state.filters)
+	const [isActive, setIsActive] = useState(false)
+	const { category } = useSelector((state) => state.filters)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		const triggerAction = setTimeout(() => {
-			if (q) dispatch(sortProductsByTitle(q))
+		dispatch(changeQuery(queryVal))
 
-			//to reset products
-			if (!q && category) {
-				dispatch(getProductsViaCategory())
-			} else if (!q && !category && onQuery) {
-				dispatch(getProducts())
+		const triggerAction = setTimeout(() => {
+			if (isActive) {
+				if (queryVal) dispatch(sortProductsByTitle(queryVal))
+
+				if (!queryVal) {
+					if (!category) {
+						dispatch(getProducts())
+					} else if (category) {
+						dispatch(getProductsViaCategory())
+					}
+				}
 			}
 		}, 1000)
 
 		return () => clearTimeout(triggerAction)
-	}, [q])
-
-	const handleInputChange = (e) => {
-		const val = e.target.value
-		setQueryVal(() => val)
-	}
-
-	useEffect(() => {
-		const triggerQueryAction = setTimeout(() => {
-			if (onQuery) {
-				dispatch(changeQuery(queryVal))
-			}
-		}, 850)
-
-		return () => clearTimeout(triggerQueryAction)
 	}, [queryVal])
 
 	return (
@@ -49,15 +39,12 @@ const SearchInput = () => {
 			<Input
 				type="search"
 				name="q"
-				id=""
 				placeholder="Search product title"
-				onChange={(e) => handleInputChange(e)}
-				onFocus={() => setonQuery(true)}
-				onBlur={() =>
-					setTimeout(() => {
-						setonQuery(false)
-					}, 10000)
-				}
+				onChange={(e) => {
+					setQueryVal(() => e.target.value)
+				}}
+				onFocus={() => setIsActive(true)}
+				onBlur={() => setIsActive(false)}
 				className="w-auto"
 			/>
 		</>

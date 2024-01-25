@@ -19,4 +19,5 @@ Don't expect animations, jaw droping UI.
 -   Vite
 
 ## Live Preview
+
 [Click Here To Live Preview With GH Pages](https://alperencapar.github.io/simple-e-commerce-site/)
