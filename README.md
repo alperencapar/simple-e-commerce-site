@@ -15,4 +15,5 @@ Don't expect animations, jaw droping UI.
 -   React Paginate
 -   React Loading Skeleton
 -   React Icons
--   Framer Motion and Vite
+-   Framer Motion
+-   Vite
