@@ -7,13 +7,14 @@ import App from "./App.jsx"
 
 import "./assets/scss/main.scss"
 
-// import "bootstrap/dist/css/bootstrap.min.css"
-// import "./index.css"
+// for gh pages. otherwise app not work at the github page preview
+// could be use .env file
+const BASE_URL = "simple-e-commerce-site/"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<Router>
+			<Router basename={BASE_URL}>
 				<App />
 			</Router>
 		</Provider>

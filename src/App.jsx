@@ -9,16 +9,12 @@ import Categories from "./pages/Categories"
 import Cart from "./pages/Cart"
 import Header from "./components/header/Header"
 
-// for gh pages. otherwise app not work at the github page preview
-// could be use .env file
-const BASE_URL = "simple-e-commerce-site/"
-
 function App() {
 	return (
 		<>
 			<Header />
 			<Routes>
-				<Route path={BASE_URL}>
+				<Route path="/">
 					<Route index element={<Home />} />
 
 					<Route path="products">
