@@ -1,4 +1,4 @@
-import { memo, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import Product from "./Product"
 import ProductNavigation from "./ProductNavigation"
@@ -15,6 +15,12 @@ const ProductsPaginate = ({ products }) => {
 		() => paginateItems(products, itemOffset, perPage),
 		[itemOffset, products, perPage]
 	)
+
+	// reset page to 1 when products are changed
+	// products'll change when query input has value
+	useEffect(() => {
+		setItemOffset(() => 0)
+	}, [products])
 
 	return (
 		<>
@@ -38,4 +44,4 @@ const ProductsPaginate = ({ products }) => {
 	)
 }
 
-export default memo(ProductsPaginate)
+export default ProductsPaginate

@@ -56,7 +56,7 @@ const SearchInput = () => {
 				onBlur={() =>
 					setTimeout(() => {
 						setonQuery(false)
-					}, 2000)
+					}, 10000)
 				}
 				className="w-auto"
 			/>

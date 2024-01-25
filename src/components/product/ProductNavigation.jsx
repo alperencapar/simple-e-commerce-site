@@ -1,4 +1,4 @@
-import { forwardRef, memo, useEffect } from "react"
+import { forwardRef, useEffect } from "react"
 import { useSelector } from "react-redux"
 
 import ReactPaginate from "react-paginate"
@@ -57,4 +57,4 @@ const ProductNavigation = forwardRef((props, ref) => {
 	)
 })
 
-export default memo(ProductNavigation)
+export default ProductNavigation
